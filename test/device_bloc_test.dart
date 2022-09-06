@@ -18,18 +18,9 @@ void main() {
   blocTest(
     'mock three repository calls for one event',
     build: () {
-      when(() => deviceRepository.add()).thenAnswer((_) {
-        print('add');
-        return Future(() {});
-      });
-      when(() => deviceRepository.disconnect()).thenAnswer((_) {
-        print('disconnect');
-        return Future(() {});
-      });
-      when(() => deviceRepository.delay()).thenAnswer((_) {
-        print('delay');
-        return Future(() {});
-      });
+      when(() => deviceRepository.add()).thenAnswer((_) async {});
+      when(() => deviceRepository.disconnect()).thenAnswer((_) async {});
+      when(() => deviceRepository.delay()).thenAnswer((_) async {});
       return bloc;
     },
     seed: () => DeviceState(status: 0),
